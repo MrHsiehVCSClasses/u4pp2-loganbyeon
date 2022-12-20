@@ -59,6 +59,10 @@ public class Combatant {
     public void setHealth(int health){
         if(health >= 0 && health < maxHealth){
             this.health = health;
+        }else if (health < 0) {
+            this.health = 0;
+        }else {
+            this.health = maxHealth;
         }
     }
 
@@ -69,6 +73,11 @@ public class Combatant {
     public void setMaxHealth(int health){
         if(health > 0){
             this.maxHealth = health;
+            if (this.health > maxHealth) {
+                this.health = maxHealth;
+            }
+        }else if (health <= 0) {
+            this.maxHealth = 1;
         }
     }
 
@@ -79,6 +88,8 @@ public class Combatant {
     public void setAttackPower(int attackPower){
         if(attackPower >= 0){
             attack = attackPower;
+        }else {
+            attack = 0;
         }
     }
 
@@ -107,6 +118,8 @@ public class Combatant {
 	 * @return the stats of the character.
 	 */
     public String toString(){
-        return "Name: " + name + " Health: " + health + " MaxHealth: " + maxHealth + "Attack Power: " + attack;
+        return "Name: " + name + 
+            "\nHealth: " + health + " \\ " + maxHealth + " (Max Health)" +
+            "\nAttack Power: " + attack;
     }
 }
