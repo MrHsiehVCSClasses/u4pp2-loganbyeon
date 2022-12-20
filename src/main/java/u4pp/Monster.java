@@ -8,7 +8,11 @@ public class Monster extends Combatant{
 	 */
     public Monster(String name, int health, int attack, int exp){
         super(name, health, attack);
-        this.exp = exp;
+        if (exp < 0) {
+            this.exp = 0;
+        }else {
+            this.exp = exp;
+        }
     }
 
     /**
@@ -32,6 +36,9 @@ public class Monster extends Combatant{
      * @return the stats of the character.
 	 */
     public String toString(){
-        return "Name: " + name + " Health: " + health + " MaxHealth: " + maxHealth + "Attack Power: " + attack + "Experience: " + exp;
+        return "Monster: " + name + 
+            "\nHealth: " + health + " \\ " + maxHealth + " (Max Health)" +
+            "\nAttack Power: " + attack + 
+            "\nExperience: " + exp;
     }
 }
