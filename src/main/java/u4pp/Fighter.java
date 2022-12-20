@@ -53,7 +53,12 @@ public class Fighter extends Combatant{
      * Constructor that calls takeDamage on the target with damage based on the Fighter's attack multiplied by 2 per stack of focus.
 	 */
     public void attack(Combatant target){
-        target.takeDamage(attack * 2 * focusStacks);
+        int attackBuff = 1;
+        for (int i = 0; i < focusStacks; i++) {
+            attackBuff *= 2;
+        }
+        target.takeDamage(attack * attackBuff);
+        focusStacks = 0;
     }
 
     /**
@@ -81,6 +86,9 @@ public class Fighter extends Combatant{
         while(experience >= level){
             experience -= level;
             level++;
+            maxHealth += 5;
+            health = maxHealth;
+            attack++;
         }
     }
     
@@ -91,9 +99,9 @@ public class Fighter extends Combatant{
     public void takeDamage(int damage){
         if(blocking == true){
             damage /= 2;
+            blocking = false;
         }
         health -= damage;
-        block();
     }
 
     /**
@@ -101,6 +109,12 @@ public class Fighter extends Combatant{
      * @return the stats of the character.
 	 */
     public String toString(){
-        return "Name: " + name + " Health: " + health + " MaxHealth: " + maxHealth + "Attack Power: " + attack + "Level: " + level + "Experience: " + experience + "Focus Stacks: " + focusStacks + "Blocking: " + blocking;
+        return "Fighter: " + name + 
+            "\nHealth: " + health + " \\ " + maxHealth + " (Max Health)" +
+            "\nAttack Power: " + attack + 
+            "\nLevel: " + level + 
+            "\nExperience: " + experience + 
+            "\nFocus Stacks: " + focusStacks + 
+            "\nBlocking: " + blocking;
     }
 }
