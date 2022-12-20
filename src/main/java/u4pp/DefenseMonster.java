@@ -35,6 +35,10 @@ public class DefenseMonster extends Monster{
      * @return the stats of the character.
 	 */
     public String toString(){
-        return "Name: " + name + " Health: " + health + " MaxHealth: " + maxHealth + "Attack Power: " + attack + "Experience: " + exp + "Defense: " + defense;
+        return "Name: " + name + 
+            "\nHealth: " + health + " \\ " + maxHealth + " (Max Health)" +
+            "\nAttack Power: " + attack + 
+            "\nExperience: " + exp + 
+            "\nDefense: " + defense;
     }
 }
