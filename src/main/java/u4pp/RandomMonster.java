@@ -24,4 +24,12 @@ public class RandomMonster extends Monster{
             target.takeDamage(attack);
         }
     }
+
+    public String toString() {
+        return "Monster: " + name + 
+            "\nHealth: " + health + " \\ " + maxHealth + " (Max Health)" +
+            "\nAttack Power: " + attack + 
+            "\nExperience: " + exp +
+            "\nChance: 50% attack/miss rate.";
+    }
 }
